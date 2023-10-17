@@ -1,6 +1,6 @@
 import {
   Route,
-  createBrowserRouter,
+  createHashRouter,
   createRoutesFromElements
 } from 'react-router-dom'
 import { Albums, Posts } from 'components'
@@ -13,7 +13,7 @@ import {
   usersLoader
 } from 'lib/loaders'
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />} loader={usersLoader}>
       <Route index element={<Main />} />
