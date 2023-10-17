@@ -18,13 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: React+webpack website
-description: >- # this means to ignore newlines until "baseurl:"
-  Simple project made with React+webpack from scratch 
-  using MUI and https://jsonplaceholder.typicode.com/ as API
 baseurl: '/react-webpack' # the subpath of your site, e.g. /blog
 url: 'https://nikin94.github.io' # the base hostname & protocol for your site, e.g. http://example.com
-github_username: nikin94
 
 # Build settings
 theme: minima
