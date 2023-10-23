@@ -1,7 +1,7 @@
 import { useLoaderData, useParams } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 
-import { BackButton } from 'components'
+import { BackButton } from '../../components'
 import Album from './Album'
 
 const Albums = () => {

@@ -1,5 +1,6 @@
 export { default as Albums } from './Albums'
 export { default as BackButton } from './BackButton'
 export { default as Header } from './Header'
+export { default as LinkWithQuery } from './LinkWithQuery'
 export { default as Posts } from './Posts'
 export { default as Users } from './Users'

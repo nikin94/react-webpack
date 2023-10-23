@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-
 import Box from '@mui/material/Box'
 import Grow from '@mui/material/Grow'
 import Typography from '@mui/material/Typography'
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import MessageIcon from '@mui/icons-material/Message'
+
+import { LinkWithQuery } from '../../components'
 
 const Selection = () => {
   const IconWrapper = ({ Icon, text, link }) => {
@@ -23,7 +23,7 @@ const Selection = () => {
             }
           }}
         >
-          <Link to={link}>
+          <LinkWithQuery to={link}>
             <Box
               sx={{
                 display: 'flex',
@@ -46,7 +46,7 @@ const Selection = () => {
                 {text}
               </Typography>
             </Box>
-          </Link>
+          </LinkWithQuery>
         </Box>
       </Grow>
     )

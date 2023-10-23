@@ -2,5 +2,11 @@
   "presets": [
     "@babel/preset-env",
     ["@babel/preset-react", { "runtime": "automatic" }]
+  ],
+  "plugins": [
+    "@loadable/babel-plugin",
+    ["@babel/plugin-transform-runtime", { "regenerator": true }],
+    ["@babel/plugin-transform-react-jsx", { "runtime": "automatic" }],
+    "babel-plugin-webpack-alias"
   ]
 }

@@ -1,50 +1,54 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const nodeExternals = require('webpack-node-externals')
 
-module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+const browserConfig = {
+  mode: 'production',
+  entry: './src/index.js',
   output: {
-    filename: 'index.bundle.js',
-    path: path.resolve(__dirname, '.build'),
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
     publicPath: '/'
-  },
-  devServer: {
-    port: 3010,
-    magicHtml: true,
-    historyApiFallback: true
   },
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      }
+      { test: /\.(js)$/, use: 'babel-loader' },
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
+    ]
+  },
+  devServer: {
+    historyApiFallback: true
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new webpack.DefinePlugin({
+      __isBrowser__: 'true'
+    })
+  ]
+}
+
+const serverConfig = {
+  mode: 'production',
+  entry: './server/index.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'server.js'
+  },
+  module: {
+    rules: [
+      { test: /\.(js)$/, use: 'babel-loader' },
+      { test: /\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader'] }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new webpack.ProvidePlugin({
-      React: 'react'
+    new webpack.DefinePlugin({
+      __isBrowser__: 'false'
     })
-  ],
-  resolve: {
-    alias: {
-      components: path.resolve(__dirname, './src/components'),
-      layouts: path.resolve(__dirname, './src/layouts'),
-      lib: path.resolve(__dirname, './src/lib'),
-      pages: path.resolve(__dirname, './src/pages'),
-      src: path.resolve(__dirname, './src')
-    }
-  },
-  externals: {
-    react: 'React'
-  }
+  ]
 }
+
+module.exports = [browserConfig, serverConfig]

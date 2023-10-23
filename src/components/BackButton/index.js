@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
-
 import Fab from '@mui/material/Fab'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
+
+import { LinkWithQuery } from '../../components'
 
 const BackButton = ({ url }) => {
   const theme = useTheme()
   const xlScreen = useMediaQuery(theme.breakpoints.up('xl'))
 
   return (
-    <Link to={url}>
+    <LinkWithQuery to={url}>
       <Fab
         color='primary'
         size={xlScreen ? 'large' : 'small'}
@@ -22,7 +22,7 @@ const BackButton = ({ url }) => {
       >
         <ArrowBackIcon fontSize='small' />
       </Fab>
-    </Link>
+    </LinkWithQuery>
   )
 }
 

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 
-import { BackButton } from 'components'
+import { BackButton } from '../../components'
 
 const Posts = () => {
   const posts = useLoaderData()

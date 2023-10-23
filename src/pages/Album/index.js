@@ -4,7 +4,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 
-import { BackButton } from 'components'
+import { BackButton } from '../../components'
 import Modal from './Modal'
 
 const Album = () => {

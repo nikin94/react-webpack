@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Grow from '@mui/material/Grow'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTheme } from '@mui/material/styles'
+
+import { LinkWithQuery } from '../../components'
 
 const Album = ({ album }) => {
   const theme = useTheme()
@@ -12,7 +12,7 @@ const Album = ({ album }) => {
   const { id, userId, title } = album
 
   return (
-    <Link to={`/user/${userId}/albums/${id}`}>
+    <LinkWithQuery to={`/user/${userId}/albums/${id}`}>
       <Grow in>
         <Box>
           <Card
@@ -37,7 +37,7 @@ const Album = ({ album }) => {
           </Card>
         </Box>
       </Grow>
-    </Link>
+    </LinkWithQuery>
   )
 }
 
